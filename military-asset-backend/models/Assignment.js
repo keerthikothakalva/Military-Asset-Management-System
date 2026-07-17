@@ -1,0 +1,46 @@
+import mongoose from "mongoose";
+
+const assignmentSchema = new mongoose.Schema(
+  {
+    base: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Base",
+      required: true,
+    },
+
+    equipment: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Equipment",
+      required: true,
+    },
+
+    assignedTo: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+
+    quantity: {
+      type: Number,
+      required: true,
+      min: 1,
+    },
+
+    assignedDate: {
+      type: Date,
+      default: Date.now,
+    },
+
+    remarks: {
+      type: String,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
+
+const Assignment = mongoose.model("Assignment", assignmentSchema);
+
+export default Assignment;

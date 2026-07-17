@@ -1,0 +1,47 @@
+"use strict";
+
+var _express = _interopRequireDefault(require("express"));
+
+var _dotenv = _interopRequireDefault(require("dotenv"));
+
+var _db = _interopRequireDefault(require("./config/db.js"));
+
+var _baseRoutes = _interopRequireDefault(require("./routes/baseRoutes.js"));
+
+var _equipmentRoutes = _interopRequireDefault(require("./routes/equipmentRoutes.js"));
+
+var _userRoutes = _interopRequireDefault(require("./routes/userRoutes.js"));
+
+var _purchaseRoutes = _interopRequireDefault(require("./routes/purchaseRoutes.js"));
+
+var _transferRoutes = _interopRequireDefault(require("./routes/transferRoutes.js"));
+
+var _assignmentRoutes = _interopRequireDefault(require("./routes/assignmentRoutes.js"));
+
+var _expenditureRoutes = _interopRequireDefault(require("./routes/expenditureRoutes.js"));
+
+var _dashboardRoutes = _interopRequireDefault(require("./routes/dashboardRoutes.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+_dotenv["default"].config();
+
+(0, _db["default"])();
+var app = (0, _express["default"])();
+app.use(_express["default"].json());
+app.use("/api/bases", _baseRoutes["default"]);
+app.use("/api/equipment", _equipmentRoutes["default"]);
+app.use("/api/users", _userRoutes["default"]);
+app.use("/api/purchases", _purchaseRoutes["default"]);
+app.use("/api/transfers", _transferRoutes["default"]);
+app.use("/api/assignments", _assignmentRoutes["default"]);
+app.use("/api/expenditures", _expenditureRoutes["default"]);
+app.use("/api/dashboard", _dashboardRoutes["default"]);
+app.get("/", function (req, res) {
+  res.send("Military Asset ManagmentAPI is Running...");
+});
+var PORT = process.env.PORT || 5000;
+app.listen(PORT, function () {
+  console.log("Server is running on port ".concat(PORT));
+});
+//# sourceMappingURL=server.dev.js.map
