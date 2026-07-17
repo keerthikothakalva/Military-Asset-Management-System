@@ -36,7 +36,7 @@ Create a `.env` file:
 
 ```env
 PORT=5000
-MONGODB_URI=your_mongodb_connection_string
+MONGODB_URI=mongodb+srv://militaryAdmin:********@cluster0.uctszyv.mongodb.net/military_asset_management?retryWrites=true&w=majority&appName=Cluster0
 JWT_SECRET=your_secret_key
 ```
 
