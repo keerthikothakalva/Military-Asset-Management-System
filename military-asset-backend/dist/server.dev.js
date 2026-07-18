@@ -33,7 +33,7 @@ _dotenv["default"].config();
 (0, _db["default"])();
 var app = (0, _express["default"])();
 app.use((0, _cors["default"])({
-  origin: ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175"],
+  origin: ["https://military-asset-management-system-m449m7bt.vercel.app"],
   credentials: true
 }));
 app.use(_express["default"].json());
