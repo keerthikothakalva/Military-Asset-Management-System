@@ -9,7 +9,7 @@ import transferRoutes from "./routes/transferRoutes.js";
 import assignmentRoutes from "./routes/assignmentRoutes.js";
 import expenditureRoutes from "./routes/expenditureRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
-import openingBalanceRoutes from "./routes/openingBalanceRoutes.js";
+import openingBalanceRoutes from "./routes/OpeningBalanceRoutes.js";
 import cors from "cors";
 
 dotenv.config();
