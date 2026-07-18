@@ -274,61 +274,113 @@ function Dashboard() {
       </div>
 
       {/* Dashboard Information */}
-      <div className="dashboard-grid">
+<div className="dashboard-grid">
 
-        <div className="dashboard-card">
+  {/* Asset Movement Summary */}
+  <div className="dashboard-card">
 
-          <div className="card-header">
-            <h3>Asset Movement Summary</h3>
+    <div className="card-header">
+      <h3>Asset Movement Summary</h3>
+    </div>
+
+    <div className="movement-summary">
+
+      <div className="movement-item">
+        <div className="movement-label">
+          <div className="movement-icon">
+            <FaBoxOpen />
           </div>
 
-          <div className="movement-summary">
-
-            <p>
-              <strong>Purchases:</strong>{" "}
-              Assets added through purchases
-            </p>
-
-            <p>
-              <strong>Transfer In:</strong>{" "}
-              Assets received from other bases
-            </p>
-
-            <p>
-              <strong>Transfer Out:</strong>{" "}
-              Assets sent to other bases
-            </p>
-
+          <div>
+            <strong>Purchases</strong>
+            <span>Assets added through purchases</span>
           </div>
-
         </div>
 
-        <div className="dashboard-card">
-
-          <div className="card-header">
-            <h3>Balance Calculation</h3>
-          </div>
-
-          <div className="movement-summary">
-
-            <p>
-              Opening Balance + Net Movement
-            </p>
-
-            <p>
-              − Assigned Assets − Expended Assets
-            </p>
-
-            <h3>
-              = Closing Balance
-            </h3>
-
-          </div>
-
+        <div className="movement-value">
+          —
         </div>
-
       </div>
 
+      <div className="movement-item">
+        <div className="movement-label">
+          <div className="movement-icon">
+            <FaArrowUp />
+          </div>
+
+          <div>
+            <strong>Transfer In</strong>
+            <span>Assets received from other bases</span>
+          </div>
+        </div>
+
+        <div className="movement-value">
+          —
+        </div>
+      </div>
+
+      <div className="movement-item">
+        <div className="movement-label">
+          <div className="movement-icon">
+            <FaArrowUp />
+          </div>
+
+          <div>
+            <strong>Transfer Out</strong>
+            <span>Assets sent to other bases</span>
+          </div>
+        </div>
+
+        <div className="movement-value">
+          —
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* Balance Calculation */}
+  <div className="dashboard-card">
+
+    <div className="card-header">
+      <h3>Balance Calculation</h3>
+    </div>
+
+    <div className="balance-calculation">
+
+      <div className="balance-row">
+        <span>Opening Balance</span>
+        <strong>{totals.openingBalance}</strong>
+      </div>
+
+      <div className="balance-row">
+        <span>+ Net Movement</span>
+        <strong>{totals.netMovement}</strong>
+      </div>
+
+      <hr className="balance-divider" />
+
+      <div className="balance-row">
+        <span>− Assigned Assets</span>
+        <strong>{totals.assigned}</strong>
+      </div>
+
+      <div className="balance-row">
+        <span>− Expended Assets</span>
+        <strong>{totals.expended}</strong>
+      </div>
+
+      <div className="balance-total">
+        <span>Closing Balance</span>
+        <strong>{totals.closingBalance}</strong>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
     </div>
   );
 }
