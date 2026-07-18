@@ -1,5 +1,5 @@
 import Assignment from "../models/Assignment.js";
-
+import createAuditLog from "../utils/createAuditLog.js";
 
 export const createAssignment = async (req, res) => {
   try {
@@ -36,6 +36,19 @@ export const createAssignment = async (req, res) => {
       assignedDate,
       remarks,
     });
+    
+    await createAuditLog({
+  user: req.user.id,
+  action: "CREATE",
+  entity: "Assignment",
+  entityId: assignment._id,
+  details: {
+    base,
+    equipment,
+    assignedTo,
+    quantity,
+  },
+});
 
     res.status(201).json({
       success: true,
@@ -60,17 +73,35 @@ export const getAllAssignments = async (req, res) => {
 
     const filter = {};
 
+    // Filter by Base
     if (req.query.base) {
       filter.base = req.query.base;
     }
 
+    // Filter by Equipment
     if (req.query.equipment) {
       filter.equipment = req.query.equipment;
     }
 
+    // Filter by Date
+    if (req.query.date) {
+      const startDate = new Date(`${req.query.date}T00:00:00.000Z`);
+      const endDate = new Date(`${req.query.date}T23:59:59.999Z`);
+
+      filter.assignedDate = {
+        $gte: startDate,
+        $lte: endDate,
+      };
+    }
+
     const assignments = await Assignment.find(filter)
       .populate("base")
-      .populate("equipment")
+      .populate({
+        path: "equipment",
+        match: req.query.equipmentType
+          ? { type: req.query.equipmentType }
+          : {},
+      })
       .sort(sort)
       .skip((page - 1) * limit)
       .limit(limit);

@@ -9,6 +9,7 @@ import transferRoutes from "./routes/transferRoutes.js";
 import assignmentRoutes from "./routes/assignmentRoutes.js";
 import expenditureRoutes from "./routes/expenditureRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
+import openingBalanceRoutes from "./routes/openingBalanceRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -39,7 +40,10 @@ app.use("/api/transfers", transferRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/expenditures", expenditureRoutes);
 app.use("/api/dashboard", dashboardRoutes);
-
+app.use(
+  "/api/opening-balances",
+  openingBalanceRoutes
+);
 
 app.get("/",(req,res)=>{
     res.send("Military Asset ManagmentAPI is Running...");

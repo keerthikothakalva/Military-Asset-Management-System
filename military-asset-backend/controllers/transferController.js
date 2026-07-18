@@ -1,5 +1,5 @@
 import Transfer from "../models/Transfer.js";
-
+import createAuditLog from "../utils/createAuditLog.js";
 
 export const createTransfer = async (req, res) => {
   try {
@@ -43,6 +43,20 @@ export const createTransfer = async (req, res) => {
       transferDate,
       remarks,
     });
+    
+
+    await createAuditLog({
+  user: req.user.id,
+  action: "CREATE",
+  entity: "Transfer",
+  entityId: transfer._id,
+  details: {
+    fromBase,
+    toBase,
+    equipment,
+    quantity,
+  },
+}); 
 
     res.status(201).json({
       success: true,
@@ -58,7 +72,6 @@ export const createTransfer = async (req, res) => {
   }
 };
 
-
 export const getAllTransfers = async (req, res) => {
   try {
     const page = Number(req.query.page) || 1;
@@ -67,22 +80,41 @@ export const getAllTransfers = async (req, res) => {
 
     const filter = {};
 
+    // Filter by From Base
     if (req.query.fromBase) {
       filter.fromBase = req.query.fromBase;
     }
 
+    // Filter by To Base
     if (req.query.toBase) {
       filter.toBase = req.query.toBase;
     }
 
+    // Filter by Equipment
     if (req.query.equipment) {
       filter.equipment = req.query.equipment;
+    }
+
+    // Filter by Date
+    if (req.query.date) {
+      const startDate = new Date(`${req.query.date}T00:00:00.000Z`);
+      const endDate = new Date(`${req.query.date}T23:59:59.999Z`);
+
+      filter.transferDate = {
+        $gte: startDate,
+        $lte: endDate,
+      };
     }
 
     const transfers = await Transfer.find(filter)
       .populate("fromBase")
       .populate("toBase")
-      .populate("equipment")
+      .populate({
+        path: "equipment",
+        match: req.query.equipmentType
+          ? { type: req.query.equipmentType }
+          : {},
+      })
       .sort(sort)
       .skip((page - 1) * limit)
       .limit(limit);

@@ -7,6 +7,8 @@ exports.getAllTransfers = exports.createTransfer = void 0;
 
 var _Transfer = _interopRequireDefault(require("../models/Transfer.js"));
 
+var _createAuditLog = _interopRequireDefault(require("../utils/createAuditLog.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var createTransfer = function createTransfer(req, res) {
@@ -64,34 +66,49 @@ var createTransfer = function createTransfer(req, res) {
 
         case 10:
           transfer = _context.sent;
+          _context.next = 13;
+          return regeneratorRuntime.awrap((0, _createAuditLog["default"])({
+            user: req.user.id,
+            action: "CREATE",
+            entity: "Transfer",
+            entityId: transfer._id,
+            details: {
+              fromBase: fromBase,
+              toBase: toBase,
+              equipment: equipment,
+              quantity: quantity
+            }
+          }));
+
+        case 13:
           res.status(201).json({
             success: true,
             message: "Transfer recorded successfully",
             data: transfer
           });
-          _context.next = 17;
+          _context.next = 19;
           break;
 
-        case 14:
-          _context.prev = 14;
+        case 16:
+          _context.prev = 16;
           _context.t0 = _context["catch"](0);
           res.status(500).json({
             success: false,
             message: _context.t0.message
           });
 
-        case 17:
+        case 19:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 14]]);
+  }, null, null, [[0, 16]]);
 };
 
 exports.createTransfer = createTransfer;
 
 var getAllTransfers = function getAllTransfers(req, res) {
-  var page, limit, sort, filter, transfers, total;
+  var page, limit, sort, filter, startDate, endDate, transfers, total;
   return regeneratorRuntime.async(function getAllTransfers$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
@@ -100,29 +117,46 @@ var getAllTransfers = function getAllTransfers(req, res) {
           page = Number(req.query.page) || 1;
           limit = Number(req.query.limit) || 10;
           sort = req.query.sort || "-createdAt";
-          filter = {};
+          filter = {}; // Filter by From Base
 
           if (req.query.fromBase) {
             filter.fromBase = req.query.fromBase;
-          }
+          } // Filter by To Base
+
 
           if (req.query.toBase) {
             filter.toBase = req.query.toBase;
-          }
+          } // Filter by Equipment
+
 
           if (req.query.equipment) {
             filter.equipment = req.query.equipment;
+          } // Filter by Date
+
+
+          if (req.query.date) {
+            startDate = new Date("".concat(req.query.date, "T00:00:00.000Z"));
+            endDate = new Date("".concat(req.query.date, "T23:59:59.999Z"));
+            filter.transferDate = {
+              $gte: startDate,
+              $lte: endDate
+            };
           }
 
-          _context2.next = 10;
-          return regeneratorRuntime.awrap(_Transfer["default"].find(filter).populate("fromBase").populate("toBase").populate("equipment").sort(sort).skip((page - 1) * limit).limit(limit));
+          _context2.next = 11;
+          return regeneratorRuntime.awrap(_Transfer["default"].find(filter).populate("fromBase").populate("toBase").populate({
+            path: "equipment",
+            match: req.query.equipmentType ? {
+              type: req.query.equipmentType
+            } : {}
+          }).sort(sort).skip((page - 1) * limit).limit(limit));
 
-        case 10:
+        case 11:
           transfers = _context2.sent;
-          _context2.next = 13;
+          _context2.next = 14;
           return regeneratorRuntime.awrap(_Transfer["default"].countDocuments(filter));
 
-        case 13:
+        case 14:
           total = _context2.sent;
           res.status(200).json({
             success: true,
@@ -131,23 +165,23 @@ var getAllTransfers = function getAllTransfers(req, res) {
             totalPages: Math.ceil(total / limit),
             data: transfers
           });
-          _context2.next = 20;
+          _context2.next = 21;
           break;
 
-        case 17:
-          _context2.prev = 17;
+        case 18:
+          _context2.prev = 18;
           _context2.t0 = _context2["catch"](0);
           res.status(500).json({
             success: false,
             message: _context2.t0.message
           });
 
-        case 20:
+        case 21:
         case "end":
           return _context2.stop();
       }
     }
-  }, null, null, [[0, 17]]);
+  }, null, null, [[0, 18]]);
 };
 
 exports.getAllTransfers = getAllTransfers;

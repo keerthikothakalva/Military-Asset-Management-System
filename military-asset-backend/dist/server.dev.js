@@ -22,6 +22,8 @@ var _expenditureRoutes = _interopRequireDefault(require("./routes/expenditureRou
 
 var _dashboardRoutes = _interopRequireDefault(require("./routes/dashboardRoutes.js"));
 
+var _openingBalanceRoutes = _interopRequireDefault(require("./routes/openingBalanceRoutes.js"));
+
 var _cors = _interopRequireDefault(require("cors"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -43,6 +45,7 @@ app.use("/api/transfers", _transferRoutes["default"]);
 app.use("/api/assignments", _assignmentRoutes["default"]);
 app.use("/api/expenditures", _expenditureRoutes["default"]);
 app.use("/api/dashboard", _dashboardRoutes["default"]);
+app.use("/api/opening-balances", _openingBalanceRoutes["default"]);
 app.get("/", function (req, res) {
   res.send("Military Asset ManagmentAPI is Running...");
 });

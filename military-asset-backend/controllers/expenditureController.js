@@ -1,4 +1,5 @@
 import Expenditure from "../models/Expenditure.js";
+import createAuditLog from "../utils/createAuditLog.js";
 
 // Create Expenditure
 export const createExpenditure = async (req, res) => {
@@ -19,6 +20,20 @@ export const createExpenditure = async (req, res) => {
       reason,
       expenditureDate,
       remarks,
+    });
+
+    // Create Audit Log
+    await createAuditLog({
+      user: req.user.id,
+      action: "CREATE",
+      entity: "Expenditure",
+      entityId: expenditure._id,
+      details: {
+        base,
+        equipment,
+        quantity,
+        reason,
+      },
     });
 
     res.status(201).json({
@@ -43,17 +58,35 @@ export const getAllExpenditures = async (req, res) => {
 
     const filter = {};
 
+    // Filter by Base
     if (req.query.base) {
       filter.base = req.query.base;
     }
 
+    // Filter by Equipment
     if (req.query.equipment) {
       filter.equipment = req.query.equipment;
     }
 
+    // Filter by Date
+    if (req.query.date) {
+      const startDate = new Date(`${req.query.date}T00:00:00.000Z`);
+      const endDate = new Date(`${req.query.date}T23:59:59.999Z`);
+
+      filter.expenditureDate = {
+        $gte: startDate,
+        $lte: endDate,
+      };
+    }
+
     const expenditures = await Expenditure.find(filter)
       .populate("base")
-      .populate("equipment")
+      .populate({
+        path: "equipment",
+        match: req.query.equipmentType
+          ? { type: req.query.equipmentType }
+          : {},
+      })
       .sort(sort)
       .skip((page - 1) * limit)
       .limit(limit);
@@ -67,6 +100,7 @@ export const getAllExpenditures = async (req, res) => {
       totalPages: Math.ceil(total / limit),
       data: expenditures,
     });
+
   } catch (error) {
     res.status(500).json({
       success: false,
