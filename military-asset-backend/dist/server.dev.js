@@ -32,8 +32,15 @@ _dotenv["default"].config();
 
 (0, _db["default"])();
 var app = (0, _express["default"])();
+var allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "https://military-asset-management-system-fiil8hw1s.vercel.app"];
 app.use((0, _cors["default"])({
-  origin: ["https://military-asset-management-system-fiil8hw1s.vercel.app"],
+  origin: function origin(_origin, callback) {
+    if (!_origin || allowedOrigins.includes(_origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 app.use(_express["default"].json());
