@@ -28,7 +28,9 @@ app.use(
   })
 );
 
+
 app.use(express.json());
+
 app.use("/api/bases", baseRoutes);
 app.use("/api/equipment", equipmentRoutes);
 app.use("/api/users", userRoutes);
