@@ -22,7 +22,6 @@ app.use(
   cors({
     origin: [
       "https://military-asset-management-system-m449m7bt.vercel.app",
-      
     ],
     credentials: true,
   })
