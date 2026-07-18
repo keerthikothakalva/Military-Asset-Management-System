@@ -110,40 +110,55 @@ The system enables authorized users to manage bases, equipment, opening balances
 ### Authentication
 
 POST /api/users
+
 POST /api/users/login
+
 GET  /api/users
 
 ### Base
 
  GET /api/bases
+ 
  POST /api/bases
 
 ### Equipment
 
 GET  /api/equipment
+
 POST /api/equipment
 
 ### Opening Balances
+
 GET  /api/opening-balances
+
 POST /api/opening-balances
 
 ### Purchases
+
 GET  /api/purchases
+
 POST /api/purchases
 
 ### Transfers
+
 GET  /api/transfers
+
 POST /api/transfers
 
 ### Assignments
+
 GET  /api/assignments
+
 POST /api/assignments
 
 ### Expenditures
+
 GET  /api/expenditures
+
 POST /api/expenditures
 
 ### Dashboard
+
 GET /api/dashboard
 
 ### Asset Balance Calculation
@@ -157,6 +172,7 @@ The closing balance is calculated as:
 ==> Closing Balance =Opening Balance+ Net Movement- Assigned Assets- Expended Assets
 
 ### Security
+
 JWT Authentication
 Password Hashing using bcryptjs
 Protected Routes
