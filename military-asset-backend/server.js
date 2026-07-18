@@ -21,7 +21,7 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "https://military-asset-management-system-fiil8hw1s.vercel.app/",
+      "https://military-asset-management-system-fiil8hw1s.vercel.app",
     ],
     credentials: true,
   })
