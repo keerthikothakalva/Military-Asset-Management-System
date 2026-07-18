@@ -18,6 +18,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var router = _express["default"].Router();
 
 router.post("/", _authMiddleware["default"], (0, _roleMiddleware["default"])("Admin", "Base Commander"), _expenditureController.createExpenditure);
+router.get("/", _authMiddleware["default"], _expenditureController.getAllExpenditures);
 var _default = router;
 exports["default"] = _default;
 //# sourceMappingURL=expenditureRoutes.dev.js.map
