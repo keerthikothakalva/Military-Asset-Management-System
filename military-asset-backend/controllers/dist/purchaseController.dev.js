@@ -19,7 +19,7 @@ var createPurchase = function createPurchase(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _req$body = req.body, base = _req$body.base, equipment = _req$body.equipment, quantity = _req$body.quantity, purchaseDate = _req$body.purchaseDate, remarks = _req$body.remarks; // Input Validation
+          _req$body = req.body, base = _req$body.base, equipment = _req$body.equipment, quantity = _req$body.quantity, purchaseDate = _req$body.purchaseDate, remarks = _req$body.remarks;
 
           if (!(!base || !equipment || !quantity)) {
             _context.next = 4;

@@ -132,4 +132,4 @@ var getAllOpeningBalances = function getAllOpeningBalances(req, res) {
 };
 
 exports.getAllOpeningBalances = getAllOpeningBalances;
-//# sourceMappingURL=openingBalanceController.dev.js.map
+//# sourceMappingURL=OpeningBalanceController.dev.js.map

@@ -46,12 +46,12 @@ function Login() {
     <div className="login-page">
       <div className="login-card">
 
-        {/* Logo */}
+        
         <div className="login-logo">
           <FaShieldAlt />
         </div>
 
-        {/* Header */}
+        
         <div className="text-center mb-4">
           <h1 className="login-title">
             Military Asset Management
@@ -62,10 +62,10 @@ function Login() {
           </p>
         </div>
 
-        {/* Form */}
+        
         <form onSubmit={handleSubmit}>
 
-          {/* Email */}
+          
           <div className="form-group">
             <label htmlFor="email">
               Email Address
@@ -82,7 +82,7 @@ function Login() {
             />
           </div>
 
-          {/* Password */}
+          
           <div className="form-group">
             <label htmlFor="password">
               Password
@@ -111,7 +111,7 @@ function Login() {
             </div>
           </div>
 
-          {/* Submit */}
+          
           <button
             type="submit"
             className="login-button"
@@ -121,7 +121,7 @@ function Login() {
 
         </form>
 
-        {/* Footer */}
+        
         <div className="login-footer">
           Authorized personnel only
         </div>

@@ -66,7 +66,7 @@ function Navbar() {
   return (
     <aside className="sidebar">
 
-      {/* Logo */}
+      
       <div className="sidebar-header">
         <div className="sidebar-logo">
           <FaShieldAlt />
@@ -78,7 +78,7 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Navigation */}
+      
       <nav className="sidebar-nav">
         {navItems.map((item) => (
           <NavLink
@@ -97,7 +97,7 @@ function Navbar() {
         ))}
       </nav>
 
-      {/* User Section */}
+      
       <div className="sidebar-footer">
 
         <div className="user-info">

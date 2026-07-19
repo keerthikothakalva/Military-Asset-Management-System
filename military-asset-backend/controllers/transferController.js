@@ -12,7 +12,7 @@ export const createTransfer = async (req, res) => {
       remarks,
     } = req.body;
 
-    // Input Validation
+    
     if (!fromBase || !toBase || !equipment || !quantity) {
       return res.status(400).json({
         success: false,

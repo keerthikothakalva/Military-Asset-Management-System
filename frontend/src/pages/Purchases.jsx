@@ -5,6 +5,7 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import api from "../services/api";
+import "./purchases.css";
 
 function Purchases() {
   const [purchases, setPurchases] = useState([]);
@@ -24,7 +25,6 @@ function Purchases() {
     remarks: "",
   });
 
-  // Fetch purchases, bases and equipment
   useEffect(() => {
     let ignore = false;
 
@@ -139,7 +139,7 @@ function Purchases() {
   return (
     <div className="page-container">
 
-      {/* Header */}
+      
       <div className="page-header">
         <div>
           <h1>Purchases</h1>
@@ -158,7 +158,7 @@ function Purchases() {
         </button>
       </div>
 
-      {/* Search */}
+      
       <div className="search-container">
         <FaSearch />
 
@@ -168,14 +168,14 @@ function Purchases() {
         />
       </div>
 
-      {/* Error */}
+      
       {error && (
         <div className="error-message">
           {error}
         </div>
       )}
 
-      {/* Loading */}
+      
       {loading ? (
         <div className="loading-state">
           Loading purchases...
@@ -240,7 +240,7 @@ function Purchases() {
         </div>
       )}
 
-      {/* Modal */}
+      
       {showModal && (
         <div className="modal-overlay">
 
@@ -255,13 +255,13 @@ function Purchases() {
                   setShowModal(false)
                 }
               >
-                ×
+                x
               </button>
             </div>
 
             <form onSubmit={handleSubmit}>
 
-              {/* Base */}
+              
               <div className="form-group">
                 <label>Base</label>
 
@@ -286,7 +286,7 @@ function Purchases() {
                 </select>
               </div>
 
-              {/* Equipment */}
+              
               <div className="form-group">
                 <label>Equipment</label>
 
@@ -311,7 +311,7 @@ function Purchases() {
                 </select>
               </div>
 
-              {/* Quantity */}
+              
               <div className="form-group">
                 <label>Quantity</label>
 
@@ -326,7 +326,7 @@ function Purchases() {
                 />
               </div>
 
-              {/* Purchase Date */}
+              
               <div className="form-group">
                 <label>Purchase Date</label>
 
@@ -338,7 +338,7 @@ function Purchases() {
                 />
               </div>
 
-              {/* Remarks */}
+              
               <div className="form-group">
                 <label>Remarks</label>
 
@@ -351,7 +351,7 @@ function Purchases() {
                 />
               </div>
 
-              {/* Actions */}
+              
               <div className="modal-actions">
 
                 <button

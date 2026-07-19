@@ -12,7 +12,7 @@ export const createAssignment = async (req, res) => {
       remarks,
     } = req.body;
 
-    // Input Validation
+    
     if (!base || !equipment || !assignedTo || !quantity) {
       return res.status(400).json({
         success: false,

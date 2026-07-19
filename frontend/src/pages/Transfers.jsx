@@ -4,6 +4,7 @@ import {
   FaPlus,
 } from "react-icons/fa";
 import api from "../services/api";
+import "./Transfers.css";
 
 function Transfers() {
   const [transfers, setTransfers] = useState([]);
@@ -143,7 +144,7 @@ function Transfers() {
   return (
     <div className="page-container">
 
-      {/* Header */}
+      
       <div className="page-header">
         <div>
           <h1>Transfers</h1>
@@ -162,14 +163,14 @@ function Transfers() {
         </button>
       </div>
 
-      {/* Error */}
+      
       {error && (
         <div className="error-message">
           {error}
         </div>
       )}
 
-      {/* Content */}
+      
       {loading ? (
         <div className="loading-state">
           Loading transfers...
@@ -242,7 +243,7 @@ function Transfers() {
         </div>
       )}
 
-      {/* Modal */}
+      
       {showModal && (
         <div className="modal-overlay">
 
@@ -257,13 +258,13 @@ function Transfers() {
                   setShowModal(false)
                 }
               >
-                ×
+                x
               </button>
             </div>
 
             <form onSubmit={handleSubmit}>
 
-              {/* From Base */}
+              
               <div className="form-group">
                 <label>From Base</label>
 
@@ -288,7 +289,7 @@ function Transfers() {
                 </select>
               </div>
 
-              {/* To Base */}
+              
               <div className="form-group">
                 <label>To Base</label>
 
@@ -313,7 +314,7 @@ function Transfers() {
                 </select>
               </div>
 
-              {/* Equipment */}
+              
               <div className="form-group">
                 <label>Equipment</label>
 
@@ -338,7 +339,7 @@ function Transfers() {
                 </select>
               </div>
 
-              {/* Quantity */}
+              
               <div className="form-group">
                 <label>Quantity</label>
 
@@ -354,7 +355,7 @@ function Transfers() {
                 />
               </div>
 
-              {/* Transfer Date */}
+              
               <div className="form-group">
                 <label>Transfer Date</label>
 
@@ -366,7 +367,7 @@ function Transfers() {
                 />
               </div>
 
-              {/* Remarks */}
+              
               <div className="form-group">
                 <label>Remarks</label>
 
@@ -379,7 +380,7 @@ function Transfers() {
                 />
               </div>
 
-              {/* Actions */}
+              
               <div className="modal-actions">
 
                 <button

@@ -7,7 +7,7 @@ export const getDashboard = async (req, res) => {
   try {
     const { date, base, equipmentType } = req.query;
 
-    // Base Commander can only access their assigned base
+    
     let selectedBase = base;
 
     if (req.user.role === "Base Commander") {

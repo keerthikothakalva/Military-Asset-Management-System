@@ -19,7 +19,7 @@ var createTransfer = function createTransfer(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _req$body = req.body, fromBase = _req$body.fromBase, toBase = _req$body.toBase, equipment = _req$body.equipment, quantity = _req$body.quantity, transferDate = _req$body.transferDate, remarks = _req$body.remarks; // Input Validation
+          _req$body = req.body, fromBase = _req$body.fromBase, toBase = _req$body.toBase, equipment = _req$body.equipment, quantity = _req$body.quantity, transferDate = _req$body.transferDate, remarks = _req$body.remarks;
 
           if (!(!fromBase || !toBase || !equipment || !quantity)) {
             _context.next = 4;

@@ -5,7 +5,7 @@ export const createPurchase = async (req, res) => {
   try {
     const { base, equipment, quantity, purchaseDate, remarks } = req.body;
 
-    // Input Validation
+    
     if (!base || !equipment || !quantity) {
       return res.status(400).json({
         success: false,

@@ -228,7 +228,7 @@ function Expenditures() {
                   setShowModal(false)
                 }
               >
-                ×
+                x
               </button>
             </div>
 

@@ -152,7 +152,6 @@ function Assignments() {
   return (
     <div className="page-container">
 
-      {/* Header */}
       <div className="page-header">
         <div>
           <h1>Assignments</h1>
@@ -173,14 +172,14 @@ function Assignments() {
         </button>
       </div>
 
-      {/* Error */}
+      
       {error && (
         <div className="error-message">
           {error}
         </div>
       )}
 
-      {/* Content */}
+      
       {loading ? (
         <div className="loading-state">
           Loading assignments...
@@ -257,7 +256,6 @@ function Assignments() {
         </div>
       )}
 
-      {/* Modal */}
       {showModal && (
         <div className="modal-overlay">
 
@@ -280,7 +278,6 @@ function Assignments() {
               onSubmit={handleSubmit}
             >
 
-              {/* Base */}
               <div className="form-group">
                 <label>Base</label>
 
@@ -307,7 +304,7 @@ function Assignments() {
                 </select>
               </div>
 
-              {/* Equipment */}
+              
               <div className="form-group">
                 <label>Equipment</label>
 
@@ -334,7 +331,7 @@ function Assignments() {
                 </select>
               </div>
 
-              {/* Assigned To */}
+            
               <div className="form-group">
                 <label>
                   Assigned To

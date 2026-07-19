@@ -19,7 +19,7 @@ var createAssignment = function createAssignment(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _req$body = req.body, base = _req$body.base, equipment = _req$body.equipment, assignedTo = _req$body.assignedTo, quantity = _req$body.quantity, assignedDate = _req$body.assignedDate, remarks = _req$body.remarks; // Input Validation
+          _req$body = req.body, base = _req$body.base, equipment = _req$body.equipment, assignedTo = _req$body.assignedTo, quantity = _req$body.quantity, assignedDate = _req$body.assignedDate, remarks = _req$body.remarks;
 
           if (!(!base || !equipment || !assignedTo || !quantity)) {
             _context.next = 4;

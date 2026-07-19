@@ -17,7 +17,7 @@ var createEquipment = function createEquipment(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          _req$body = req.body, name = _req$body.name, type = _req$body.type, unit = _req$body.unit, description = _req$body.description; // Input Validation
+          _req$body = req.body, name = _req$body.name, type = _req$body.type, unit = _req$body.unit, description = _req$body.description;
 
           if (!(!name || !type || !unit)) {
             _context.next = 4;

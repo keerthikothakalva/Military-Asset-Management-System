@@ -35,6 +35,7 @@
 }
 
 
+
 * {
   margin: 0;
   padding: 0;
@@ -70,13 +71,30 @@ a {
   text-decoration: none;
 }
 
-
 button {
   cursor: pointer;
 }
 
+
 .page-container {
   padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.page-header p {
+  color: var(--text-secondary);
+  font-size: 14px;
 }
 
 .btn-primary-custom {
@@ -92,7 +110,6 @@ button {
   background-color: var(--primary-dark);
 }
 
-
 .custom-card {
   background-color: var(--surface);
   border: 1px solid var(--border);
@@ -100,8 +117,6 @@ button {
   padding: 20px;
   box-shadow: var(--shadow-sm);
 }
-
-/* LOGIN PAGE */
 
 .login-page {
   min-height: 100vh;
@@ -165,7 +180,9 @@ button {
   font-weight: 600;
 }
 
-.form-group input {
+.form-group input,
+.form-group select,
+.form-group textarea {
   width: 100%;
   padding: 12px 14px;
 
@@ -174,17 +191,26 @@ button {
 
   outline: none;
   font-size: 15px;
+  font-family: inherit;
 
-  transition: border-color 0.2s ease,
-              box-shadow 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
   border-color: var(--primary);
 
   box-shadow: 0 0 0 3px
     rgba(30, 58, 95, 0.1);
 }
+
+.form-group textarea {
+  resize: vertical;
+}
+
 
 .password-wrapper {
   position: relative;
@@ -236,7 +262,7 @@ button {
   color: var(--text-secondary);
   font-size: 12px;
 }
-/*APP LAYOUT */
+
 
 .app-layout {
   display: flex;
@@ -250,7 +276,6 @@ button {
   background-color: var(--background);
 }
 
-/* SIDEBAR */
 
 .sidebar {
   position: fixed;
@@ -266,8 +291,6 @@ button {
   background-color: var(--primary);
   color: white;
 }
-
-/*SIDEBAR HEADER*/
 
 .sidebar-header {
   display: flex;
@@ -305,7 +328,6 @@ button {
   font-size: 11px;
 }
 
-/*NAVIGATION*/
 
 .sidebar-nav {
   flex: 1;
@@ -345,8 +367,6 @@ button {
   display: flex;
   justify-content: center;
 }
-
-/* USER FOOTER*/
 
 .sidebar-footer {
   padding: 16px;
@@ -414,172 +434,18 @@ button {
 .logout-button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-/* DASHBOARD*/
 
-.dashboard-page {
-  padding: 28px;
-}
-
-.page-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-
-.page-header h1 {
-  margin: 0 0 6px;
-  font-size: 28px;
-}
-
-.page-header p {
-  color: var(--text-secondary);
-  font-size: 14px;
-}
-
-.dashboard-date {
-  padding: 10px 14px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text-secondary);
-  font-size: 13px;
-}
-
-/* FILTERS */
-
-.dashboard-filters {
-  display: flex;
-  align-items: end;
-  gap: 16px;
-  padding: 20px;
-  margin-bottom: 24px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
-}
-
-.filter-group {
-  flex: 1;
-}
-
-.filter-group label {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.filter-button {
-  height: 38px;
-  padding: 0 18px;
-  border: none;
-  border-radius: 7px;
-  background: var(--primary);
-  color: white;
-  font-weight: 600;
-}
-
-/* METRICS */
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.metric-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
-}
-
-.metric-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  font-size: 19px;
-}
-
-.metric-card p {
-  margin-bottom: 4px;
-  color: var(--text-secondary);
-  font-size: 12px;
-}
-
-.metric-card h2 {
-  margin: 0;
-  font-size: 25px;
-}
-
-.metric-blue .metric-icon {
-  background: #e8eef5;
-  color: #1e3a5f;
-}
-
-.metric-green .metric-icon {
-  background: #dcfce7;
-  color: var(--success);
-}
-
-.metric-purple .metric-icon {
-  background: #f3e8ff;
-  color: #9333ea;
-}
-
-.metric-orange .metric-icon {
-  background: #ffedd5;
-  color: var(--warning);
-}
-
-.metric-red .metric-icon {
-  background: #fee2e2;
-  color: var(--danger);
-}
-
-/* DASHBOARD CARDS */
-
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 20px;
-}
-
-.dashboard-card {
-  min-height: 280px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
-}
-
-.card-header {
-  padding: 18px 20px;
-  border-bottom: 1px solid var(--border);
-}
-
-.card-header h3 {
-  margin: 0;
-  font-size: 16px;
-}
 
 .empty-state {
   min-height: 210px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
   gap: 8px;
+
   color: var(--text-secondary);
   text-align: center;
 }
@@ -598,45 +464,6 @@ button {
   font-size: 12px;
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 1100px) {
-  .metrics-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .dashboard-page {
-    padding: 16px;
-  }
-
-  .page-header {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .dashboard-filters {
-    align-items: stretch;
-    flex-direction: column;
-  }
-
-  .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 480px) {
-  .metrics-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* MOBILE */
 
 @media (max-width: 768px) {
   .sidebar {
@@ -663,8 +490,13 @@ button {
     justify-content: center;
     padding: 14px;
   }
+
+  .page-container {
+    padding: 16px;
+  }
 }
-/*login*/
+
+
 @media (max-width: 480px) {
   .login-card {
     padding: 28px 20px;
@@ -673,9 +505,5 @@ button {
   .login-title {
     font-size: 22px;
   }
-}
-@media (max-width: 768px) {
-  .page-container {
-    padding: 16px;
-  }
+
 }

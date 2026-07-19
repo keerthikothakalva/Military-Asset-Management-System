@@ -5,7 +5,7 @@ export const createEquipment = async (req, res) => {
   try {
     const { name, type, unit, description } = req.body;
 
-    // Input Validation
+    
     if (!name || !type || !unit) {
       return res.status(400).json({
         success: false,

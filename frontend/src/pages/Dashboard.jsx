@@ -1,5 +1,5 @@
 import { useCallback,useEffect, useState } from "react";
-
+import "./Dashboard.css"
 import {
   FaBoxOpen,
   FaArrowUp,
@@ -148,7 +148,6 @@ function Dashboard() {
   return (
     <div className="dashboard-page">
 
-      {/* Header */}
       <div className="page-header">
         <div>
           <h1>Dashboard</h1>
@@ -163,14 +162,14 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Error */}
+      
       {error && (
         <div className="error-message">
           {error}
         </div>
       )}
 
-      {/* Filters */}
+      
       <div className="dashboard-filters">
 
         <div className="filter-group">
@@ -249,7 +248,7 @@ function Dashboard() {
 
       </div>
 
-      {/* Metrics */}
+      
       <div className="metrics-grid">
 
         {metrics.map((metric) => (
@@ -273,10 +272,10 @@ function Dashboard() {
 
       </div>
 
-      {/* Dashboard Information */}
+      
 <div className="dashboard-grid">
 
-  {/* Asset Movement Summary */}
+  
   <div className="dashboard-card">
 
     <div className="card-header">
@@ -340,7 +339,7 @@ function Dashboard() {
 
   </div>
 
-  {/* Balance Calculation */}
+  
   <div className="dashboard-card">
 
     <div className="card-header">

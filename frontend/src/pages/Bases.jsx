@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaBuilding, FaPlus, FaSearch } from "react-icons/fa";
 import api from "../services/api";
-
+import "./Bases.css";
 function Bases() {
   const [bases, setBases] = useState([]);
   const [search, setSearch] = useState("");
@@ -76,7 +76,7 @@ function Bases() {
 
       setShowModal(false);
 
-      // Refresh bases after creating a new one
+      
       const response = await api.get("/api/bases", {
         params: {
           search,

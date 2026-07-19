@@ -5,6 +5,7 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import api from "../services/api";
+import "./Equipment.css";
 
 function Equipment() {
   const [equipment, setEquipment] = useState([]);
@@ -113,7 +114,7 @@ function Equipment() {
   return (
     <div className="page-container">
 
-      {/* Header */}
+      
       <div className="page-header">
         <div>
           <h1>Equipment</h1>
@@ -131,7 +132,7 @@ function Equipment() {
         </button>
       </div>
 
-      {/* Search */}
+     
       <div className="search-container">
         <FaSearch />
 
@@ -145,14 +146,14 @@ function Equipment() {
         />
       </div>
 
-      {/* Error */}
+      
       {error && (
         <div className="error-message">
           {error}
         </div>
       )}
 
-      {/* Loading */}
+      
       {loading ? (
         <div className="loading-state">
           Loading equipment...
@@ -200,7 +201,7 @@ function Equipment() {
         </div>
       )}
 
-      {/* Modal */}
+      
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-card">
@@ -220,7 +221,7 @@ function Equipment() {
 
             <form onSubmit={handleSubmit}>
 
-              {/* Name */}
+              
               <div className="form-group">
                 <label>
                   Equipment Name
@@ -236,7 +237,7 @@ function Equipment() {
                 />
               </div>
 
-              {/* Type */}
+              
               <div className="form-group">
                 <label>
                   Equipment Type
@@ -274,7 +275,7 @@ function Equipment() {
                 </select>
               </div>
 
-              {/* Unit */}
+              
               <div className="form-group">
                 <label>
                   Unit
@@ -290,7 +291,7 @@ function Equipment() {
                 />
               </div>
 
-              {/* Description */}
+              
               <div className="form-group">
                 <label>
                   Description
@@ -305,7 +306,7 @@ function Equipment() {
                 />
               </div>
 
-              {/* Actions */}
+              
               <div className="modal-actions">
 
                 <button
