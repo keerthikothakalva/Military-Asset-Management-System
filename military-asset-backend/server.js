@@ -22,7 +22,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
   "http://localhost:5175",
-  "https://military-asset-management-system-fiil8hw1s.vercel.app",
+  "https://military-asset-management-system-e7zame5h7.vercel.app",
 ];
 
 app.use(

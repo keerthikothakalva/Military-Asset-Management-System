@@ -32,7 +32,7 @@ _dotenv["default"].config();
 
 (0, _db["default"])();
 var app = (0, _express["default"])();
-var allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "https://military-asset-management-system-fiil8hw1s.vercel.app"];
+var allowedOrigins = ["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "https://military-asset-management-system-e7zame5h7.vercel.app"];
 app.use((0, _cors["default"])({
   origin: function origin(_origin, callback) {
     if (!_origin || allowedOrigins.includes(_origin)) {
